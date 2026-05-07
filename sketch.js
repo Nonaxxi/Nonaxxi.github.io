@@ -6,6 +6,7 @@ let Buttons;
 
 // Noten
 let noteImages = [];
+let noteBunt = [];
 let letters = "ABCDE";
 let imgW = 80,
   imgH = 80;
@@ -56,6 +57,10 @@ let values = [];
 function preload() {
   PPNeueMachina = loadFont("data/PPNeueMachina_PlainUltrabold.otf");
   HELVETICASCHOOL = loadFont("data/HELVETICASCHOOL.TTF");
+
+  for (let i = 0; i < 8; i++) {
+    noteBunt[i] = loadImage(`data/NoteBunt (${i + 1}).PNG`);
+  }
 
   for (let row = 0; row < 5; row++) {
     noteImages[row] = [];
@@ -209,7 +214,7 @@ function Balkendiagramm() {
     textAlign(CENTER, CENTER);
     fill(360, 0, 0);
     textFont(HELVETICASCHOOL);
-    textSize(120);
+    textSize(100);
     text("Mach den Test!", width * 0.5, height * 0.35);
     rectMode(CORNER);
 
@@ -220,10 +225,34 @@ function Balkendiagramm() {
   noStroke();
   rect(width*0.5, height*0.35, width*0.8, height*0.5, 10);
 
+  imageMode(CENTER);
+  let centerX = width * 0.5;
+  let centerY = height * 0.35;
+  let noteSize = width * 0.10;
+  let offsets = [
+    [-0.34, -0.22],
+    [0, -0.34],
+    [0.34, -0.22],
+    [-0.42, -0.04],
+    [0.42, -0.04],
+    [-0.34, 0.22],
+    [0, 0.34],
+    [0.34, 0.22],
+  ];
+  for (let i = 0; i < noteBunt.length; i++) {
+    let ox = offsets[i][0] * boxW;
+    let oy = offsets[i][1] * boxH;
+    push();
+    translate(centerX + ox, centerY + oy);
+    rotate(frameCount * 0.02 * (i % 2 === 0 ? 1 : -1));
+    image(noteBunt[i], 0, 0, noteSize, noteSize);
+    pop();
+  }
+
   textAlign(CENTER, CENTER);
   textFont(HELVETICASCHOOL);
   fill(360, 0, 0);
-  textSize(150);
+  textSize(110);
   text("Mache den Test!", width*0.5, height*0.35);
   rectMode(CORNER);
 
@@ -542,7 +571,7 @@ function mousePressed() {
     let count = fragen.length;
     for (let i = 0; i < count; i++) {
       let fy = map(i, 0, count - 1, height * 0.2, height * 0.7);
-      let startX = width * 0.45;
+      let startX = width * 0.5;
       let spacing = (width * 0.8 - startX) / 3.0;
 
       for (let c = 0; c < 4; c++) {
