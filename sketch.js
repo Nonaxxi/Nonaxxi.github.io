@@ -14,8 +14,8 @@ let xPos = [],
   yPos = [],
   vx = [],
   vy = [];
-let imgW = 80,
-  imgH = 80;
+let imgW = 100,
+  imgH = 100;
 
 // Außenbox
 let boxX, boxY, boxW, boxH;
@@ -23,7 +23,7 @@ let boxX, boxY, boxW, boxH;
 let midX, midY, midW, midH;
 
 let fragen = [
-  "Abbo Preis",
+  "Abo Preis",
   "Bezahlung an \nKünstler*innen",
   "Größe des \nMusikangebots",
   "Klangqualität",
@@ -36,14 +36,14 @@ let aktuellePunkte = 0;
 let showWeiter = false;
 
 // V1 Startwerte
-let spotify = 0,
-  applemusic = 0,
-  amazonmusic = 0,
-  tidal = 0;
-let qobuz = 0,
-  youtubemusic = 0,
-  deezer = 0,
-  soundcloud = 0;
+let spotify = 10,
+  applemusic = 10,
+  amazonmusic = 10,
+  tidal = 10;
+let qobuz = 10,
+  youtubemusic = 10,
+  deezer = 10,
+  soundcloud = 10;
 
 let labels = [
   "Spotify",
@@ -65,7 +65,7 @@ function preload() {
   HELVETICASCHOOL = loadFont("data/HELVETICASCHOOL.TTF");
 
   for (let i = 0; i < 8; i++) {
-    noten[i] = loadImage("data/NotenBeispiel (" + (i + 1) + ").png");
+    noten[i] = loadImage("data/NoteBunt (" + (i + 1) + ").png");
   }
 
   for (let row = 0; row < 5; row++) {
@@ -83,20 +83,20 @@ function preload() {
 // SETUP
 // ---------------------------------------------------------------------------
 function setup() {
-  createCanvas(1732, 3000);
+  createCanvas(1732, 2850);
   colorMode(HSB, 360, 100, 100, 100);
 
   Buttons = color(270, 0, 100);
 
   barColors = [
-    color(141, 84, 73), // Spotify
-    color(351, 86, 98), // Apple Music
-    color(193, 100, 88), // Amazon Music
-    color(0, 0, 63), // Tidal
-    color(360, 0, 100, 100), // Qobuz
-    color(0, 100, 100), // YouTube Music
-    color(271, 77, 95), // Deezer  (war: 959 → 95)
-    color(20, 100, 100), // SoundCloud
+    color(154, 100, 64), // Spotify
+    color(354, 63, 92), // Apple Music
+    color(190, 66, 84), // Amazon Music
+    color(0, 0, 80), // Tidal
+    color(0, 0, 100), // Qobuz
+    color(5, 92, 89), // YouTube Music
+    color(272, 52, 59), // Deezer
+    color(25, 97, 93), // SoundCloud
   ];
 
   values = [
@@ -264,13 +264,13 @@ function Navigation() {
   if (Auswahl >= 2) {
     noStroke();
     fill(Buttons);
-    circle(width * 0.05, height * 0.05, width * 0.05);
+    circle(width * 0.07, height * 0.07, width * 0.05);
 
     stroke(360, 0, 0);
     strokeWeight(3);
     let r = width * 0.05 * 0.15;
-    let cx = width * 0.05;
-    let cy = height * 0.05;
+    let cx = width * 0.07;
+    let cy = height * 0.07;
     line(cx - r, cy - r, cx + r, cy + r);
     line(cx - r, cy + r, cx + r, cy - r);
   }
@@ -458,13 +458,13 @@ function V3() {
   rectMode(CENTER);
   fill(Buttons);
   noStroke();
-  rect(width * 0.5, height * 0.4, width * 0.2, height * 0.04, 10);
+  rect(width * 0.5, height * 0.6, width * 0.2, height * 0.04, 10);
 
   textAlign(CENTER, CENTER);
   fill(270, 0, 0);
   textFont(PPNeueMachina);
   textSize(40);
-  text("Verstanden", width * 0.5, height * 0.4);
+  text("Verstanden", width * 0.5, height * 0.6);
 }
 
 // ---------------------------------------------------------------------------
@@ -492,14 +492,14 @@ function V4() {
       strokeWeight(3);
       if (antworten[i] === c + 1) fill(360);
       else noFill();
-      circle(cx, fy, 28);
+      circle(cx, fy, 50);
     }
   }
 
   noStroke();
   fill(360);
-  textAlign(CENTER, CENTER);
   textFont(HELVETICASCHOOL);
+  textAlign(CENTER, CENTER);
   textSize(40);
   text(
     aktuellePunkte + "  von 13 Punkten vergeben",
@@ -542,9 +542,9 @@ function Note() {
       imgSize,
     );
   }
-  fill(360);
+  fill(0, 0, 0);
   textSize(40);
-  text("Mach ein Foto und vergleiche!", width / 2, height * 0.8);
+  text("Mach ein Foto und vergleiche!", width / 2, height * 0.75);
 }
 
 // ---------------------------------------------------------------------------
@@ -638,7 +638,7 @@ function mousePressed() {
   // V3: Verstanden-Button
   if (Auswahl === 3) {
     if (
-      hitVerstanden(width * 0.33, height * 0.55, width * 0.3, height * 0.06)
+      hitVerstanden(width * 0.33, height * 0.55, width * 0.4, height * 0.06)
     ) {
       Auswahl = 4;
     }
@@ -655,7 +655,7 @@ function mousePressed() {
 
       for (let c = 0; c < 4; c++) {
         let cx = startX + c * spacing;
-        let r = 35;
+        let r = 70;
 
         if (
           mouseX > cx - r &&
