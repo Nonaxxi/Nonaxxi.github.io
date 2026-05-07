@@ -144,7 +144,8 @@ function draw() {
 // ---------------------------------------------------------------------------
 function Navigation() {
   if (Auswahl >= 2) {
-    noStroke();
+    stroke(0, 0, 0);
+    strokeWeight(2);
     fill(Buttons);
     circle(width * 0.07, height * 0.07, width * 0.05);
 
@@ -200,14 +201,14 @@ function Balkendiagramm() {
   }
 
     textAlign(CENTER, TOP);
-    textFont(PPNeueMachina);
+    textFont(HELVETICASCHOOL);
     fill(360);
     textSize(40);
     text("Anzahl HTW Hörer*innen pro Musikdienst", width / 2, height * 0.96);
 
     textAlign(CENTER, CENTER);
     fill(360, 0, 0);
-    textFont(PPNeueMachina);
+    textFont(HELVETICASCHOOL);
     textSize(120);
     text("Mach den Test!", width * 0.5, height * 0.35);
     rectMode(CORNER);
@@ -220,7 +221,7 @@ function Balkendiagramm() {
   rect(width*0.5, height*0.35, width*0.8, height*0.5, 10);
 
   textAlign(CENTER, CENTER);
-  textFont(PPNeueMachina);
+  textFont(HELVETICASCHOOL);
   fill(360, 0, 0);
   textSize(150);
   text("Mache den Test!", width*0.5, height*0.35);
@@ -244,7 +245,7 @@ function V2() {
   imageMode(CORNER);
   textAlign(CENTER, CENTER);
   fill(360);
-  textFont(PPNeueMachina);
+  textFont(HELVETICASCHOOL);
   textSize(80);
   text(
     "Welchen Streamingdienst \nnutzt du zur Zeit?",
@@ -323,7 +324,7 @@ function V2() {
 // ---------------------------------------------------------------------------
 function V3() {
   textAlign(CENTER, TOP);
-  textFont(PPNeueMachina);
+  textFont(HELVETICASCHOOL);
   fill(Buttons);
   textSize(80);
   text("Was ist dir beim \nMusik-Streaming wichtig?", width / 2, height * 0.15);
@@ -353,7 +354,7 @@ function V3() {
 
   textAlign(CENTER, CENTER);
   fill(270, 0, 0);
-  textFont(PPNeueMachina);
+  textFont(HELVETICASCHOOL);
   textSize(40);
   text("Verstanden", width * 0.5, height * 0.6);
 }
@@ -368,7 +369,7 @@ function V4() {
     let fy = map(i, 0, count - 1, height * 0.2, height * 0.7);
 
     textAlign(LEFT, CENTER);
-    textFont(PPNeueMachina);
+    textFont(HELVETICASCHOOL);
     fill(360);
     noStroke();
     textSize(40);
@@ -404,7 +405,7 @@ function V4() {
     rectMode(CENTER);
     rect(width * 0.5, height * 0.9, width * 0.2, height * 0.06, 10);
     fill(360, 0, 0);
-    textFont(PPNeueMachina);
+    textFont(HELVETICASCHOOL);
     textSize(40);
     textAlign(CENTER, CENTER);
     text("Weiter", width * 0.5, height * 0.9);
@@ -435,7 +436,7 @@ function Note() {
   }
   fill(0, 0, 0);
   textSize(40);
-  text("Mach ein Foto und vergleiche!", width / 2, height * 0.75);
+  text("Mach ein Foto und vergleiche!", width / 2, height * 0.8);
 }
 
 // ---------------------------------------------------------------------------
@@ -446,7 +447,7 @@ function hitBox(x, y, w, h) {
 }
 
 function hitX() {
-  return dist(mouseX, mouseY, width * 0.05, height * 0.05) < width * 0.025;
+  return dist(mouseX, mouseY, width * 0.07, height * 0.07) < width * 0.05;
 }
 
 // START-Button: rectMode(CENTER) bei (0.5, 0.35), Größe (0.8 × 0.5)
