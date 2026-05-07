@@ -83,7 +83,7 @@ function preload() {
 // SETUP
 // ---------------------------------------------------------------------------
 function setup() {
-  createCanvas(720, 950);
+  createCanvas(1732, 2800);
   colorMode(HSB, 360, 100, 100, 100);
 
   Buttons = color(270, 0, 100);
@@ -181,9 +181,7 @@ function draw() {
   Navigation();
 
   noCursor();
-  noStroke();
-  fill(213, 98, 98);
-  circle(mouseX, mouseY, 30);
+
 }
 
 // ---------------------------------------------------------------------------
@@ -303,7 +301,7 @@ function Balkendiagramm() {
     fill(360);
     textAlign(CENTER, BOTTOM);
     textFont(HELVETICASCHOOL);
-    textSize(12);
+    textSize(16);
     let valueY = height * 0.9 - h - 50;
     if (valueY > height * 0.85) valueY = height * 0.85;
     text(values[i], bx + barWidth * 0.5, valueY);
@@ -322,7 +320,7 @@ function Balkendiagramm() {
   textAlign(CENTER, TOP);
   textFont(PPNeueMachina);
   fill(360);
-  textSize(20);
+  textSize(22);
   text("Anzahl Hörer*innen pro Musikdienst", width / 2, height * 0.96);
 
   // START-Button
@@ -334,8 +332,8 @@ function Balkendiagramm() {
   textAlign(CENTER, CENTER);
   fill(360, 0, 0);
   textFont(PPNeueMachina);
-  textSize(40);
-  text("START", width * 0.5, height * 0.39);
+  textSize(50);
+  text("Mach den Test!", width * 0.5, height * 0.39);
   rectMode(CORNER);
 }
 
@@ -353,7 +351,7 @@ function V2() {
     width * 0.5,
     height * 0.15,
   );
-
+textSize(20);
   drawStreamButton(
     width * 0.15,
     height * 0.2,
@@ -441,8 +439,8 @@ function V3() {
 
   textAlign(LEFT, TOP);
   textFont(HELVETICASCHOOL);
-  textSize(16);
   fill(360);
+  textSize(16);
   text(
     " In diesem Fragebogen entscheidest du,\n" +
       " welche Eigenschaften ein Musik‑Streamingdienst\n" +
@@ -453,14 +451,14 @@ function V3() {
       " bewerten – von weniger wichtig bis sehr wichtig.\n" +
       " Wähle so, dass die Summe am Ende\n" +
       " genau 13 Punkte ergibt.",
-    width * 0.23,
+    width * 0.3,
     height * 0.27,
   );
 
   rectMode(CORNER);
   fill(Buttons);
   noStroke();
-  rect(width * 0.33, height * 0.55, width * 0.3, height * 0.06, 10);
+  rect(width * 0.33, height * 0.55, width * 0.4, height * 0.06, 10);
 
   textAlign(CENTER, CENTER);
   fill(270, 0, 0);
@@ -516,7 +514,7 @@ function V4() {
     rect(width * 0.5, height * 0.9, width * 0.2, height * 0.06, 10);
     fill(360, 0, 0);
     textFont(PPNeueMachina);
-    textSize(20);
+    textSize(22);
     textAlign(CENTER, CENTER);
     text("Weiter", width * 0.5, height * 0.9);
     rectMode(CORNER);
@@ -544,6 +542,9 @@ function Note() {
       imgSize,
     );
   }
+  fill(360);
+  textSize(22);
+  text("Mach ein Foto und vergleiche!", width / 2, height * 0.8);
 }
 
 // ---------------------------------------------------------------------------
