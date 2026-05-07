@@ -7,13 +7,6 @@ let Buttons;
 // Noten
 let noteImages = [];
 let letters = "ABCDE";
-//Test
-// Animation
-let noten = [];
-let xPos = [],
-  yPos = [],
-  vx = [],
-  vy = [];
 let imgW = 80,
   imgH = 80;
 
@@ -63,15 +56,6 @@ let values = [];
 function preload() {
   PPNeueMachina = loadFont("data/PPNeueMachina_PlainUltrabold.otf");
   HELVETICASCHOOL = loadFont("data/HELVETICASCHOOL.TTF");
-
-  noten[0] = loadImage("data/NoteBunt (1).PNG");
-  noten[1] = loadImage("data/NoteBunt (2).PNG");
-  noten[2] = loadImage("data/NoteBunt (3).PNG");
-  noten[3] = loadImage("data/NoteBunt (4).PNG");
-  noten[4] = loadImage("data/NoteBunt (5).PNG");
-  noten[5] = loadImage("data/NoteBunt (6).PNG");
-  noten[6] = loadImage("data/NoteBunt (7).PNG");
-  noten[7] = loadImage("data/NoteBunt(8).PNG");
 
   for (let row = 0; row < 5; row++) {
     noteImages[row] = [];
@@ -123,39 +107,6 @@ function setup() {
   midY = height * 0.35;
   midW = width * 0.5;
   midH = height * 0.1;
-
-  for (let i = 0; i < 8; i++) {
-    let valid = false;
-    while (!valid) {
-      let margin = imgW * 0.7;
-      let left = boxX - boxW / 2 + margin;
-      let right = boxX + boxW / 2 - margin;
-      let top = boxY - boxH / 2 + margin;
-      let bottom = boxY + boxH / 2 - margin;
-
-      xPos[i] = random(left, right);
-      yPos[i] = random(top, bottom);
-
-      let insideMiddle =
-        xPos[i] > midX - midW / 2 - imgW / 2 &&
-        xPos[i] < midX + midW / 2 + imgW / 2 &&
-        yPos[i] > midY - midH / 2 - imgH / 2 &&
-        yPos[i] < midY + midH / 2 + imgH / 2;
-
-      let overlap = false;
-      for (let j = 0; j < i; j++) {
-        if (dist(xPos[i], yPos[i], xPos[j], yPos[j]) < imgW * 1.1) {
-          overlap = true;
-          break;
-        }
-      }
-      if (!insideMiddle && !overlap) valid = true;
-    }
-    vx[i] = random(-2, 2);
-    vy[i] = random(-2, 2);
-    if (abs(vx[i]) < 0.8) vx[i] = vx[i] < 0 ? -0.8 : 0.8;
-    if (abs(vy[i]) < 0.8) vy[i] = vy[i] < 0 ? -0.8 : 0.8;
-  }
 }
 
 // ---------------------------------------------------------------------------
@@ -167,7 +118,6 @@ function draw() {
   switch (Auswahl) {
     case 1:
       Balkendiagramm();
-      Animation();
       break;
     case 2:
       V2();
@@ -188,79 +138,6 @@ function draw() {
   noCursor();
 
 }
-
-// ---------------------------------------------------------------------------
-// ANIMATION
-// ---------------------------------------------------------------------------
-function Animation() {
-  imageMode(CENTER);
-  let left = boxX - boxW / 2 + imgW / 2;
-  let right = boxX + boxW / 2 - imgW / 2;
-  let top = boxY - boxH / 2 + imgH / 2;
-  let bottom = boxY + boxH / 2 - imgH / 2;
-
-  for (let i = 0; i < 8; i++) {
-    xPos[i] += vx[i];
-    yPos[i] += vy[i];
-
-    if (xPos[i] < left) {
-      xPos[i] = left;
-      vx[i] *= -1;
-    } else if (xPos[i] > right) {
-      xPos[i] = right;
-      vx[i] *= -1;
-    }
-    if (yPos[i] < top) {
-      yPos[i] = top;
-      vy[i] *= -1;
-    } else if (yPos[i] > bottom) {
-      yPos[i] = bottom;
-      vy[i] *= -1;
-    }
-
-    let closestX = constrain(xPos[i], midX - midW / 2, midX + midW / 2);
-    let closestY = constrain(yPos[i], midY - midH / 2, midY + midH / 2);
-    let overlapX = abs(xPos[i] - closestX) < imgW / 2;
-    let overlapY = abs(yPos[i] - closestY) < imgH / 2;
-    if (overlapX && overlapY) {
-      let overlapWidth = imgW / 2 - abs(xPos[i] - closestX);
-      let overlapHeight = imgH / 2 - abs(yPos[i] - closestY);
-      if (overlapWidth < overlapHeight) {
-        vx[i] *= -1;
-        xPos[i] += vx[i];
-      } else {
-        vy[i] *= -1;
-        yPos[i] += vy[i];
-      }
-    }
-
-    for (let j = i + 1; j < 8; j++) {
-      let dx = xPos[j] - xPos[i];
-      let dy = yPos[j] - yPos[i];
-      let distance = dist(xPos[i], yPos[i], xPos[j], yPos[j]);
-      let minDistance = imgW * 0.95;
-      if (distance > 0 && distance < minDistance) {
-        let overlap = (minDistance - distance) / 2;
-        let nx = dx / distance;
-        let ny = dy / distance;
-        xPos[i] -= nx * overlap;
-        yPos[i] -= ny * overlap;
-        xPos[j] += nx * overlap;
-        yPos[j] += ny * overlap;
-
-        let tx = vx[i];
-        let ty = vy[i];
-        vx[i] = vx[j];
-        vy[i] = vy[j];
-        vx[j] = tx;
-        vy[j] = ty;
-      }
-    }
-
-    image(noten[i], xPos[i], yPos[i], imgW, imgH);
-  }
-}
-
 
 // ---------------------------------------------------------------------------
 // NAVIGATION
@@ -322,24 +199,42 @@ function Balkendiagramm() {
     pop();
   }
 
-  textAlign(CENTER, TOP);
-  textFont(PPNeueMachina);
-  fill(360);
-  textSize(40);
-  text("Anzahl HTW Hörer*innen pro Musikdienst", width / 2, height * 0.96);
+    textAlign(CENTER, TOP);
+    textFont(PPNeueMachina);
+    fill(360);
+    textSize(40);
+    text("Anzahl HTW Hörer*innen pro Musikdienst", width / 2, height * 0.96);
 
-  // START-Button
+    textAlign(CENTER, CENTER);
+    fill(360, 0, 0);
+    textFont(PPNeueMachina);
+    textSize(120);
+    text("Mach den Test!", width * 0.5, height * 0.35);
+    rectMode(CORNER);
+
+  //START Button
   rectMode(CENTER);
+  //fill(213, 15, 99);
   fill(Buttons);
   noStroke();
-  rect(width * 0.5, height * 0.35, width * 0.8, height * 0.5, 30);
+  rect(width*0.5, height*0.35, width*0.8, height*0.5, 10);
 
   textAlign(CENTER, CENTER);
-  fill(360, 0, 0);
   textFont(PPNeueMachina);
-  textSize(120);
-  text("Mach den Test!", width * 0.5, height * 0.35);
+  fill(360, 0, 0);
+  textSize(150);
+  text("Mache den Test!", width*0.5, height*0.35);
   rectMode(CORNER);
+
+}
+
+function drawStreamButton(x, y, w, h, label, colorIndex) {
+  noStroke();
+  fill(barColors[colorIndex]);
+  rect(x, y, w, h, 30);
+  fill(360, 0, 0);
+  textAlign(CENTER, CENTER);
+  text(label, x + w / 2, y + h / 2);
 }
 
 // ---------------------------------------------------------------------------
@@ -356,7 +251,7 @@ function V2() {
     width * 0.5,
     height * 0.12,
   );
-textSize(60);
+  textSize(60);
   drawStreamButton(
     width * 0.15,
     height * 0.2,
@@ -386,7 +281,7 @@ textSize(60);
     height * 0.4,
     width * 0.35,
     height * 0.165,
-    "Tidal",
+    "TIDAL",
     3,
   );
   drawStreamButton(
@@ -421,15 +316,6 @@ textSize(60);
     "SoundCloud",
     7,
   );
-}
-
-function drawStreamButton(x, y, w, h, label, colorIndex) {
-  noStroke();
-  fill(barColors[colorIndex]);
-  rect(x, y, w, h, 30);
-  fill(360, 0, 0);
-  textAlign(CENTER, CENTER);
-  text(label, x + w / 2, y + h / 2);
 }
 
 // ---------------------------------------------------------------------------
