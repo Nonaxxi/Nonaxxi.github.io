@@ -30,12 +30,12 @@ let aktuellePunkte = 0;
 let showWeiter = false;
 
 // V1 Startwerte
-let spotify = 10,
-  applemusic = 10,
-  amazonmusic = 10,
-  tidal = 10;
-let qobuz = 10,
-  youtubemusic = 10,
+let spotify = 0,
+  applemusic = 0,
+  amazonmusic = 0,
+  tidal = 0;
+let qobuz = 0,
+  youtubemusic = 0,
   deezer = 10,
   soundcloud = 10;
 
@@ -223,7 +223,7 @@ function Balkendiagramm() {
   //fill(213, 15, 99);
   fill(Buttons);
   noStroke();
-  rect(width*0.5, height*0.35, width*0.8, height*0.5, 10);
+  rect(width*0.5, height*0.35, width*0.8, height*0.5, 25);
 
   imageMode(CENTER);
   let centerX = width * 0.5;
@@ -244,7 +244,7 @@ function Balkendiagramm() {
     let oy = offsets[i][1] * boxH;
     push();
     translate(centerX + ox, centerY + oy);
-    rotate(frameCount * 0.02 * (i % 2 === 0 ? 1 : -1));
+    rotate(frameCount * 0.03 * (i % 2 === 0 ? 1 : -1));
     image(noteBunt[i], 0, 0, noteSize, noteSize);
     pop();
   }
