@@ -14,8 +14,8 @@ let xPos = [],
   yPos = [],
   vx = [],
   vy = [];
-let imgW = 100,
-  imgH = 100;
+let imgW = 80,
+  imgH = 80;
 
 // Außenbox
 let boxX, boxY, boxW, boxH;
@@ -64,9 +64,14 @@ function preload() {
   PPNeueMachina = loadFont("data/PPNeueMachina_PlainUltrabold.otf");
   HELVETICASCHOOL = loadFont("data/HELVETICASCHOOL.TTF");
 
-  for (let i = 0; i < 8; i++) {
-    noten[i] = loadImage("data/NoteBunt (" + (i + 1) + ").png");
-  }
+  noten[0] = loadImage("data/NoteBunt (1).PNG");
+  noten[1] = loadImage("data/NoteBunt (2).PNG");
+  noten[2] = loadImage("data/NoteBunt (3).PNG");
+  noten[3] = loadImage("data/NoteBunt (4).PNG");
+  noten[4] = loadImage("data/NoteBunt (5).PNG");
+  noten[5] = loadImage("data/NoteBunt (6).PNG");
+  noten[6] = loadImage("data/NoteBunt (7).PNG");
+  noten[7] = loadImage("data/NoteBunt(8).PNG");
 
   for (let row = 0; row < 5; row++) {
     noteImages[row] = [];
