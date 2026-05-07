@@ -29,7 +29,7 @@ let maxPunkte = 13;
 let aktuellePunkte = 0;
 let showWeiter = false;
 
-// V1 Startwerte
+// V1 Startwerte 
 let spotify = 0,
   applemusic = 0,
   amazonmusic = 0,
