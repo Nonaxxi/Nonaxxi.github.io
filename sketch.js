@@ -36,14 +36,14 @@ let aktuellePunkte = 0;
 let showWeiter = false;
 
 // V1 Startwerte
-let spotify = 10,
-  applemusic = 10,
-  amazonmusic = 5,
-  tidal = 3;
-let qobuz = 2,
-  youtubemusic = 11,
-  deezer = 10,
-  soundcloud = 50;
+let spotify = 0,
+  applemusic = 0,
+  amazonmusic = 0,
+  tidal = 0;
+let qobuz = 0,
+  youtubemusic = 0,
+  deezer = 0,
+  soundcloud = 0;
 
 let labels = [
   "Spotify",
@@ -83,7 +83,7 @@ function preload() {
 // SETUP
 // ---------------------------------------------------------------------------
 function setup() {
-  createCanvas(1732, 2800);
+  createCanvas(1732, 3000);
   colorMode(HSB, 360, 100, 100, 100);
 
   Buttons = color(270, 0, 100);
@@ -301,9 +301,9 @@ function Balkendiagramm() {
     fill(360);
     textAlign(CENTER, BOTTOM);
     textFont(HELVETICASCHOOL);
-    textSize(16);
-    let valueY = height * 0.9 - h - 50;
-    if (valueY > height * 0.85) valueY = height * 0.85;
+    textSize(35);
+    let valueY = chartBottom - h - 20;
+    if (valueY < 20) valueY = 20;
     text(values[i], bx + barWidth * 0.5, valueY);
 
     push();
@@ -312,7 +312,7 @@ function Balkendiagramm() {
     fill(360);
     textAlign(RIGHT, TOP);
     textFont(HELVETICASCHOOL);
-    textSize(16);
+    textSize(35);
     text(labels[i], 0, 0);
     pop();
   }
@@ -320,20 +320,20 @@ function Balkendiagramm() {
   textAlign(CENTER, TOP);
   textFont(PPNeueMachina);
   fill(360);
-  textSize(22);
-  text("Anzahl Hörer*innen pro Musikdienst", width / 2, height * 0.96);
+  textSize(40);
+  text("Anzahl HTW Hörer*innen pro Musikdienst", width / 2, height * 0.96);
 
   // START-Button
   rectMode(CENTER);
   fill(Buttons);
   noStroke();
-  rect(width * 0.5, height * 0.35, width * 0.8, height * 0.5, 10);
+  rect(width * 0.5, height * 0.35, width * 0.8, height * 0.5, 30);
 
   textAlign(CENTER, CENTER);
   fill(360, 0, 0);
   textFont(PPNeueMachina);
-  textSize(50);
-  text("Mach den Test!", width * 0.5, height * 0.39);
+  textSize(120);
+  text("Mach den Test!", width * 0.5, height * 0.35);
   rectMode(CORNER);
 }
 
@@ -344,14 +344,14 @@ function V2() {
   imageMode(CORNER);
   textAlign(CENTER, CENTER);
   fill(360);
-  textSize(40);
   textFont(PPNeueMachina);
+  textSize(80);
   text(
     "Welchen Streamingdienst \nnutzt du zur Zeit?",
     width * 0.5,
-    height * 0.15,
+    height * 0.12,
   );
-textSize(20);
+textSize(60);
   drawStreamButton(
     width * 0.15,
     height * 0.2,
@@ -421,7 +421,7 @@ textSize(20);
 function drawStreamButton(x, y, w, h, label, colorIndex) {
   noStroke();
   fill(barColors[colorIndex]);
-  rect(x, y, w, h, 20);
+  rect(x, y, w, h, 30);
   fill(360, 0, 0);
   textAlign(CENTER, CENTER);
   text(label, x + w / 2, y + h / 2);
@@ -434,13 +434,13 @@ function V3() {
   textAlign(CENTER, TOP);
   textFont(PPNeueMachina);
   fill(Buttons);
-  textSize(40);
+  textSize(80);
   text("Was ist dir beim \nMusik-Streaming wichtig?", width / 2, height * 0.15);
 
   textAlign(LEFT, TOP);
   textFont(HELVETICASCHOOL);
   fill(360);
-  textSize(16);
+  textSize(30);
   text(
     " In diesem Fragebogen entscheidest du,\n" +
       " welche Eigenschaften ein Musik‑Streamingdienst\n" +
@@ -451,20 +451,20 @@ function V3() {
       " bewerten – von weniger wichtig bis sehr wichtig.\n" +
       " Wähle so, dass die Summe am Ende\n" +
       " genau 13 Punkte ergibt.",
-    width * 0.3,
+    width * 0.36,
     height * 0.27,
   );
 
-  rectMode(CORNER);
+  rectMode(CENTER);
   fill(Buttons);
   noStroke();
-  rect(width * 0.33, height * 0.55, width * 0.4, height * 0.06, 10);
+  rect(width * 0.5, height * 0.4, width * 0.2, height * 0.04, 10);
 
   textAlign(CENTER, CENTER);
   fill(270, 0, 0);
   textFont(PPNeueMachina);
   textSize(40);
-  text("Verstanden", width * 0.48, height * 0.58);
+  text("Verstanden", width * 0.5, height * 0.4);
 }
 
 // ---------------------------------------------------------------------------
@@ -478,9 +478,9 @@ function V4() {
 
     textAlign(LEFT, CENTER);
     textFont(PPNeueMachina);
-    textSize(20);
     fill(360);
     noStroke();
+    textSize(40);
     text(fragen[i], width * 0.14, fy);
 
     let startX = width * 0.5;
@@ -500,7 +500,7 @@ function V4() {
   fill(360);
   textAlign(CENTER, CENTER);
   textFont(HELVETICASCHOOL);
-  textSize(20);
+  textSize(40);
   text(
     aktuellePunkte + "  von 13 Punkten vergeben",
     width * 0.45,
@@ -514,7 +514,7 @@ function V4() {
     rect(width * 0.5, height * 0.9, width * 0.2, height * 0.06, 10);
     fill(360, 0, 0);
     textFont(PPNeueMachina);
-    textSize(22);
+    textSize(40);
     textAlign(CENTER, CENTER);
     text("Weiter", width * 0.5, height * 0.9);
     rectMode(CORNER);
@@ -543,7 +543,7 @@ function Note() {
     );
   }
   fill(360);
-  textSize(22);
+  textSize(40);
   text("Mach ein Foto und vergleiche!", width / 2, height * 0.8);
 }
 
