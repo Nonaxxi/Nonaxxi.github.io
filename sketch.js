@@ -7,7 +7,7 @@ let Buttons;
 // Noten
 let noteImages = [];
 let letters = "ABCDE";
-
+//Test
 // Animation
 let noten = [];
 let xPos = [],
