@@ -36,8 +36,8 @@ let spotify = 0,
   tidal = 0;
 let qobuz = 0,
   youtubemusic = 0,
-  deezer = 10,
-  soundcloud = 10;
+  deezer = 0,
+  soundcloud = 0;
 
 let labels = [
   "Spotify",
