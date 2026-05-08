@@ -57,6 +57,7 @@ let values = [];
 function preload() {
   PPNeueMachina = loadFont("data/PPNeueMachina_PlainUltrabold.otf");
   HELVETICASCHOOL = loadFont("data/HELVETICASCHOOL.TTF");
+  HelveticaBold = loadFont("data/HelveticaBold.otf");
 
   for (let i = 0; i < 8; i++) {
     noteBunt[i] = loadImage(`data/NoteBunt (${i + 1}).PNG`);
@@ -206,14 +207,14 @@ function Balkendiagramm() {
   }
 
     textAlign(CENTER, TOP);
-    textFont(HELVETICASCHOOL);
     fill(360);
+    textFont(HelveticaBold);
     textSize(40);
     text("Anzahl HTW Hörer*innen pro Musikdienst", width / 2, height * 0.96);
 
     textAlign(CENTER, CENTER);
     fill(360, 0, 0);
-    textFont(HELVETICASCHOOL);
+    textFont(HelveticaBold);
     textSize(100);
     text("Mach den Test!", width * 0.5, height * 0.35);
     rectMode(CORNER);
@@ -244,14 +245,14 @@ function Balkendiagramm() {
     let oy = offsets[i][1] * boxH;
     push();
     translate(centerX + ox, centerY + oy);
-    rotate(frameCount * 0.03 * (i % 2 === 0 ? 1 : -1));
+    rotate(frameCount * 0.05 * (i % 2 === 0 ? 1 : -1));
     image(noteBunt[i], 0, 0, noteSize, noteSize);
     pop();
   }
 
   textAlign(CENTER, CENTER);
-  textFont(HELVETICASCHOOL);
   fill(360, 0, 0);
+  textFont(HelveticaBold);
   textSize(110);
   text("Mache den Test!", width*0.5, height*0.35);
   rectMode(CORNER);
@@ -274,7 +275,7 @@ function V2() {
   imageMode(CORNER);
   textAlign(CENTER, CENTER);
   fill(360);
-  textFont(HELVETICASCHOOL);
+  textFont(HelveticaBold);
   textSize(80);
   text(
     "Welchen Streamingdienst \nnutzt du zur Zeit?",
@@ -353,7 +354,7 @@ function V2() {
 // ---------------------------------------------------------------------------
 function V3() {
   textAlign(CENTER, TOP);
-  textFont(HELVETICASCHOOL);
+  textFont(HelveticaBold);
   fill(Buttons);
   textSize(80);
   text("Was ist dir beim \nMusik-Streaming wichtig?", width / 2, height * 0.15);
@@ -383,7 +384,7 @@ function V3() {
 
   textAlign(CENTER, CENTER);
   fill(270, 0, 0);
-  textFont(HELVETICASCHOOL);
+  textFont(HelveticaBold);
   textSize(40);
   text("Verstanden", width * 0.5, height * 0.6);
 }
@@ -393,19 +394,28 @@ function V3() {
 // ---------------------------------------------------------------------------
 function V4() {
   let count = fragen.length;
+  let startX = width * 0.5;
+  let spacing = (width * 0.8 - startX) / 3.0;
+  let labelY = height * 0.2 - 40;
+
+  textAlign(CENTER, BOTTOM);
+  textFont(HelveticaBold);
+  textSize(20);
+  fill(360);
+  for (let c = 0; c < 4; c++) {
+    let cx = startX + c * spacing;
+    text(c + 1, cx, labelY);
+  }
 
   for (let i = 0; i < count; i++) {
     let fy = map(i, 0, count - 1, height * 0.2, height * 0.7);
 
     textAlign(LEFT, CENTER);
-    textFont(HELVETICASCHOOL);
     fill(360);
     noStroke();
+    textFont(HelveticaBold);
     textSize(40);
-    text(fragen[i], width * 0.14, fy);
-
-    let startX = width * 0.5;
-    let spacing = (width * 0.8 - startX) / 3.0;
+    text(fragen[i], width * 0.17, fy);
 
     for (let c = 0; c < 4; c++) {
       let cx = startX + c * spacing;
@@ -419,12 +429,12 @@ function V4() {
 
   noStroke();
   fill(360);
-  textFont(HELVETICASCHOOL);
+  textFont(HelveticaBold);
   textAlign(CENTER, CENTER);
   textSize(40);
   text(
     aktuellePunkte + "  von 13 Punkten vergeben",
-    width * 0.45,
+    width * 0.5,
     height * 0.8,
   );
 
@@ -434,7 +444,7 @@ function V4() {
     rectMode(CENTER);
     rect(width * 0.5, height * 0.9, width * 0.2, height * 0.06, 10);
     fill(360, 0, 0);
-    textFont(HELVETICASCHOOL);
+    textFont(HelveticaBold);
     textSize(40);
     textAlign(CENTER, CENTER);
     text("Weiter", width * 0.5, height * 0.9);
