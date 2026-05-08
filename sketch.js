@@ -245,7 +245,7 @@ function Balkendiagramm() {
     let oy = offsets[i][1] * boxH;
     push();
     translate(centerX + ox, centerY + oy);
-    rotate(frameCount * 0.05 * (i % 2 === 0 ? 1 : -1));
+    rotate(frameCount * 0.09 * (i % 2 === 0 ? 1 : -1));
     image(noteBunt[i], 0, 0, noteSize, noteSize);
     pop();
   }
