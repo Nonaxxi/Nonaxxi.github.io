@@ -1,3 +1,5 @@
+//save bevor an Laptop anpassen
+
 let Auswahl = 1;
 let RasterZeigen = true;
 let PPNeueMachina, HELVETICASCHOOL;
