@@ -78,7 +78,7 @@ function preload() {
 // SETUP
 // ---------------------------------------------------------------------------
 function setup() {
-  createCanvas(1850, 1080);
+  createCanvas(1700, 980);
   colorMode(HSB, 360, 100, 100, 100);
 
   Buttons = color(270, 0, 100);
@@ -209,7 +209,7 @@ function Balkendiagramm() {
     textAlign(CENTER, TOP);
     fill(360);
     textFont(HelveticaBold);
-    textSize(12);
+    textSize(16);
     text("Anzahl HTW Hörer*innen pro Musikdienst", width / 2, height * 0.96);
 
     textAlign(CENTER, CENTER);
@@ -276,7 +276,7 @@ function V2() {
   textAlign(CENTER, CENTER);
   fill(360);
   textFont(HelveticaBold);
-  textSize(30);
+  textSize(25);
   text(
     "Welchen Streamingdienst \nnutzt du zur Zeit?",
     width * 0.5,
@@ -356,7 +356,7 @@ function V3() {
   textAlign(CENTER, TOP);
   textFont(HelveticaBold);
   fill(Buttons);
-  textSize(30);
+  textSize(25);
   text("Was ist dir beim \nMusik-Streaming wichtig?", width / 2, height * 0.15);
 
   textAlign(LEFT, TOP);
@@ -373,7 +373,7 @@ function V3() {
       " bewerten – von weniger wichtig bis sehr wichtig.\n" +
       " Wähle so, dass die Summe am Ende\n" +
       " genau 13 Punkte ergibt.",
-    width * 0.36,
+    width * 0.46,
     height * 0.27,
   );
 
@@ -400,7 +400,7 @@ function V4() {
 
   textAlign(CENTER, BOTTOM);
   textFont(HelveticaBold);
-  textSize(20);
+  textSize(16);
   fill(360);
   for (let c = 0; c < 4; c++) {
     let cx = startX + c * spacing;
@@ -414,7 +414,7 @@ function V4() {
     fill(360);
     noStroke();
     textFont(HelveticaBold);
-    textSize(40);
+    textSize(20);
     text(fragen[i], width * 0.17, fy);
 
     for (let c = 0; c < 4; c++) {
