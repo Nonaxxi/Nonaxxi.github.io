@@ -78,7 +78,7 @@ function preload() {
 // SETUP
 // ---------------------------------------------------------------------------
 function setup() {
-  createCanvas(1700, 980);
+  createCanvas(1670, 950);
   colorMode(HSB, 360, 100, 100, 100);
 
   Buttons = color(270, 0, 100);
@@ -209,7 +209,7 @@ function Balkendiagramm() {
     textAlign(CENTER, TOP);
     fill(360);
     textFont(HelveticaBold);
-    textSize(16);
+    textSize(18);
     text("Anzahl HTW Hörer*innen pro Musikdienst", width / 2, height * 0.96);
 
     textAlign(CENTER, CENTER);
@@ -245,7 +245,7 @@ function Balkendiagramm() {
     let oy = offsets[i][1] * boxH;
     push();
     translate(centerX + ox, centerY + oy);
-    rotate(frameCount * 0.09 * (i % 2 === 0 ? 1 : -1));
+    rotate(frameCount * 0.06 * (i % 2 === 0 ? 1 : -1));
     image(noteBunt[i], 0, 0, noteSize, noteSize);
     pop();
   }
@@ -282,7 +282,7 @@ function V2() {
     width * 0.5,
     height * 0.12,
   );
-  textSize(20);
+  textSize(26);
   drawStreamButton(
     width * 0.15,
     height * 0.2,
@@ -362,7 +362,7 @@ function V3() {
   textAlign(LEFT, TOP);
   textFont(HELVETICASCHOOL);
   fill(360);
-  textSize(16);
+  textSize(18);
   text(
     " In diesem Fragebogen entscheidest du,\n" +
       " welche Eigenschaften ein Musik‑Streamingdienst\n" +
@@ -373,7 +373,7 @@ function V3() {
       " bewerten – von weniger wichtig bis sehr wichtig.\n" +
       " Wähle so, dass die Summe am Ende\n" +
       " genau 13 Punkte ergibt.",
-    width * 0.46,
+    width * 0.4,
     height * 0.27,
   );
 
@@ -400,7 +400,7 @@ function V4() {
 
   textAlign(CENTER, BOTTOM);
   textFont(HelveticaBold);
-  textSize(16);
+  textSize(26);
   fill(360);
   for (let c = 0; c < 4; c++) {
     let cx = startX + c * spacing;
