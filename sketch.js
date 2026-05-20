@@ -1,5 +1,3 @@
-//save bevor an Laptop anpassen
-
 let Auswahl = 1;
 let RasterZeigen = true;
 let PPNeueMachina, HELVETICASCHOOL;
@@ -80,7 +78,7 @@ function preload() {
 // SETUP
 // ---------------------------------------------------------------------------
 function setup() {
-  createCanvas(1732, 2850);
+  createCanvas(1920, 1080);
   colorMode(HSB, 360, 100, 100, 100);
 
   Buttons = color(270, 0, 100);
@@ -192,7 +190,7 @@ function Balkendiagramm() {
     fill(360);
     textAlign(CENTER, BOTTOM);
     textFont(HELVETICASCHOOL);
-    textSize(35);
+    textSize(20);
     let valueY = chartBottom - h - 20;
     if (valueY < 20) valueY = 20;
     text(values[i], bx + barWidth * 0.5, valueY);
@@ -203,7 +201,7 @@ function Balkendiagramm() {
     fill(360);
     textAlign(RIGHT, TOP);
     textFont(HELVETICASCHOOL);
-    textSize(35);
+    textSize(20);
     text(labels[i], 0, 0);
     pop();
   }
@@ -211,13 +209,13 @@ function Balkendiagramm() {
     textAlign(CENTER, TOP);
     fill(360);
     textFont(HelveticaBold);
-    textSize(40);
+    textSize(12);
     text("Anzahl HTW Hörer*innen pro Musikdienst", width / 2, height * 0.96);
 
     textAlign(CENTER, CENTER);
     fill(360, 0, 0);
     textFont(HelveticaBold);
-    textSize(100);
+    textSize(35);
     text("Mach den Test!", width * 0.5, height * 0.35);
     rectMode(CORNER);
 
@@ -255,7 +253,7 @@ function Balkendiagramm() {
   textAlign(CENTER, CENTER);
   fill(360, 0, 0);
   textFont(HelveticaBold);
-  textSize(110);
+  textSize(35);
   text("Mache den Test!", width*0.5, height*0.35);
   rectMode(CORNER);
 
@@ -278,13 +276,13 @@ function V2() {
   textAlign(CENTER, CENTER);
   fill(360);
   textFont(HelveticaBold);
-  textSize(80);
+  textSize(30);
   text(
     "Welchen Streamingdienst \nnutzt du zur Zeit?",
     width * 0.5,
     height * 0.12,
   );
-  textSize(60);
+  textSize(20);
   drawStreamButton(
     width * 0.15,
     height * 0.2,
@@ -358,13 +356,13 @@ function V3() {
   textAlign(CENTER, TOP);
   textFont(HelveticaBold);
   fill(Buttons);
-  textSize(80);
+  textSize(30);
   text("Was ist dir beim \nMusik-Streaming wichtig?", width / 2, height * 0.15);
 
   textAlign(LEFT, TOP);
   textFont(HELVETICASCHOOL);
   fill(360);
-  textSize(30);
+  textSize(16);
   text(
     " In diesem Fragebogen entscheidest du,\n" +
       " welche Eigenschaften ein Musik‑Streamingdienst\n" +
@@ -387,7 +385,7 @@ function V3() {
   textAlign(CENTER, CENTER);
   fill(270, 0, 0);
   textFont(HelveticaBold);
-  textSize(40);
+  textSize(20);
   text("Verstanden", width * 0.5, height * 0.6);
 }
 
@@ -433,7 +431,7 @@ function V4() {
   fill(360);
   textFont(HelveticaBold);
   textAlign(CENTER, CENTER);
-  textSize(40);
+  textSize(20);
   text(
     aktuellePunkte + "  von 13 Punkten vergeben",
     width * 0.5,
@@ -447,7 +445,7 @@ function V4() {
     rect(width * 0.5, height * 0.9, width * 0.2, height * 0.06, 10);
     fill(360, 0, 0);
     textFont(HelveticaBold);
-    textSize(40);
+    textSize(20);
     textAlign(CENTER, CENTER);
     text("Weiter", width * 0.5, height * 0.9);
     rectMode(CORNER);
@@ -476,7 +474,7 @@ function Note() {
     );
   }
   fill(0, 0, 0);
-  textSize(40);
+  textSize(20);
   text("Mach ein Foto und vergleiche!", width / 2, height * 0.8);
 }
 
