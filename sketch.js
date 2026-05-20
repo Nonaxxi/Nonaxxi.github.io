@@ -153,12 +153,12 @@ function Navigation() {
     stroke(0, 0, 0);
     strokeWeight(2);
     fill(Buttons);
-    circle(width * 0.05, height * 0.07, width * 0.05);
+    circle(width * 0.05, height * 0.07, width * 0.025);
 
     stroke(360, 0, 0);
     strokeWeight(3);
     let r = width * 0.05 * 0.15;
-    let cx = width * 0.07;
+    let cx = width * 0.05;
     let cy = height * 0.07;
     line(cx - r, cy - r, cx + r, cy + r);
     line(cx - r, cy + r, cx + r, cy - r);
