@@ -78,7 +78,7 @@ function preload() {
 // SETUP
 // ---------------------------------------------------------------------------
 function setup() {
-  createCanvas(1920, 1080);
+  createCanvas(1850, 1080);
   colorMode(HSB, 360, 100, 100, 100);
 
   Buttons = color(270, 0, 100);
@@ -153,7 +153,7 @@ function Navigation() {
     stroke(0, 0, 0);
     strokeWeight(2);
     fill(Buttons);
-    circle(width * 0.07, height * 0.07, width * 0.05);
+    circle(width * 0.05, height * 0.07, width * 0.05);
 
     stroke(360, 0, 0);
     strokeWeight(3);
@@ -462,7 +462,7 @@ function Note() {
   rect(0, 0, width, height);
 
   imageMode(CENTER);
-  let imgSize = width * 0.8;
+  let imgSize = width * 0.5;
 
   for (let i = 0; i < 5; i++) {
     image(
@@ -475,7 +475,7 @@ function Note() {
   }
   fill(0, 0, 0);
   textSize(20);
-  text("Mach ein Foto und vergleiche!", width / 2, height * 0.8);
+  text("Mach ein Foto und vergleiche!", width / 2, height * 0.9);
 }
 
 // ---------------------------------------------------------------------------
